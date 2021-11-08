@@ -19,18 +19,18 @@ window.fakeStorage = {
 };
 
 function LocalScoreManager() {
-  this.key = "bestScore";
+  this.key = 'bestScore';
 
-  var supported = this.localStorageSupported();
+  const supported = this.localStorageSupported();
   this.storage = supported ? window.localStorage : window.fakeStorage;
 }
 
 LocalScoreManager.prototype.localStorageSupported = function () {
-  var testKey = "test";
-  var storage = window.localStorage;
+  const testKey = 'test';
+  const storage = window.localStorage;
 
   try {
-    storage.setItem(testKey, "1");
+    storage.setItem(testKey, '1');
     storage.removeItem(testKey);
     return true;
   } catch (error) {
