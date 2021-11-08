@@ -123,7 +123,7 @@ module.exports = {
     'padded-blocks': [2, 'never'],
     'template-curly-spacing': 2,
     'comma-style': 2,
-    // curly: 2,
+    curly: 2,
     'no-debugger': process.env.NODE_ENV === 'production' ? 2 : 0,
 
     'keyword-spacing': 2,

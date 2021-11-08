@@ -49,7 +49,9 @@ KeyboardInputManager.prototype.listen = function () {
         self.emit('move', mapped);
       }
 
-      if (event.which === 32) self.restart.bind(self)(event);
+      if (event.which === 32) {
+        self.restart.bind(self)(event);
+      }
     }
   });
 
@@ -74,7 +76,9 @@ KeyboardInputManager.prototype.listen = function () {
   const gameContainer = document.getElementsByClassName('game-container')[0];
 
   gameContainer.addEventListener('touchstart', function (event) {
-    if (event.touches.length > 1) return;
+    if (event.touches.length > 1) {
+      return;
+    }
 
     touchStartClientX = event.touches[0].clientX;
     touchStartClientY = event.touches[0].clientY;
@@ -86,7 +90,9 @@ KeyboardInputManager.prototype.listen = function () {
   });
 
   gameContainer.addEventListener('touchend', function (event) {
-    if (event.touches.length > 0) return;
+    if (event.touches.length > 0) {
+      return;
+    }
     const dx = event.changedTouches[0].clientX - touchStartClientX;
     const absDx = Math.abs(dx);
     const dy = event.changedTouches[0].clientY - touchStartClientY;
