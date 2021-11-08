@@ -16,46 +16,6 @@ body {
   margin: 20px 0 0 0;
 }
 
-.overlay {
-  height: 100%;
-  width: 100%;
-  position: fixed;
-  top: 0;
-  left: 0;
-  overflow: auto;
-  background: rgba(255, 255, 255, 0.8);
-  z-index: 1000;
-}
-
-.modal {
-  background: #f0f;
-  border-radius: 3px;
-  width: 300px;
-  margin-top: 100px;
-  margin-left: auto;
-  margin-right: auto;
-}
-.appstore {
-  text-align: center;
-}
-
-.appstore-icon {
-  margin-top: 20px;
-  margin-left: auto;
-  margin-right: auto;
-  height: 212px;
-  width: 212px;
-  background: #f0f url("../img/212/doge-sunglasses-212.gif");
-}
-.close-modal {
-  margin-top: 20px;
-  cursor: pointer;
-}
-
-.close-modal:hover {
-  animation: hover-change linear 0.1s infinite;
-}
-
 .heading:after {
   content: "";
   display: block;
@@ -182,26 +142,6 @@ a:hover {
   left: 50%;
   margin-left: -32px;
   margin-bottom: 10px;
-}
-
-.shout-out-container {
-  text-align: center;
-}
-.shout-out {
-  height: 10px;
-  line-height: 10px;
-  background: #f0f;
-  padding: 10px 10px;
-  border-radius: 3px;
-  display: inline-block;
-}
-
-.shout-out a {
-  font-weight: normal;
-  height: 10px;
-  width: auto;
-  text-decoration: none;
-  color: #fff;
 }
 
 .info-container,
@@ -647,8 +587,7 @@ hr {
   margin-bottom: 0;
 }
 
-.game-explanation,
-.shout-out {
+.game-explanation {
   margin-top: 0px;
   text-align: center;
   font-size: 14px;
@@ -663,10 +602,6 @@ hr {
   body {
     margin: 20px 0;
     padding: 0 20px;
-  }
-
-  .modal {
-    width: 280px;
   }
 
   h1.title {
@@ -694,7 +629,6 @@ hr {
     display: none;
   }
 
-  .shout-out,
   .game-explanation {
     margin-top: 10px;
     height: 0;
