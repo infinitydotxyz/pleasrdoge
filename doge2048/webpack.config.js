@@ -15,6 +15,7 @@ module.exports = {
       title: 'Doge2048',
       template: 'index.html',
       favicon: 'favicon.png',
+      scriptLoading: 'blocking',
     }),
   ],
   module: {
