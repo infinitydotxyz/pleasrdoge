@@ -1,3 +1,5 @@
+import '../js/main.js';
+
 import '../js/game_manager.js';
 import '../js/animframe_polyfill.js';
 import '../js/keyboard_input_manager.js';

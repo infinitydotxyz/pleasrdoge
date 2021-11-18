@@ -15,11 +15,14 @@ module.exports = {
       title: 'Doge2048',
       template: 'index.html',
       favicon: 'favicon.png',
-      scriptLoading: 'blocking',
     }),
   ],
   module: {
     rules: [
+      {
+        test: /\.html$/i,
+        loader: 'html-loader',
+      },
       {
         test: /\.css$/i,
         use: ['style-loader', 'css-loader'],
