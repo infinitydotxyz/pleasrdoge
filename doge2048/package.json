@@ -4,8 +4,8 @@
   "version": "1.0.0",
   "main": "src/index.js",
   "scripts": {
-    "start": "node src/index.js",
-    "build": "cd doge2048 && npm run build",
+    "start": "node dist/main.bundle.js",
+    "build": "webpack && (rm -r ../public/doge2048 || true) && cp -r ./dist ../public/doge2048",
     "test": "echo \"Error: no test specified\" && exit 1"
   },
   "repository": {
@@ -18,14 +18,15 @@
     "url": "https://github.com/mavriklabs/pleasrdoge/issues"
   },
   "homepage": "https://github.com/mavriklabs/pleasrdoge#readme",
-  "dependencies": {
-    "dotenv": "^10.0.0",
-    "express": "^4.17.1"
-  },
   "devDependencies": {
+    "css-loader": "^6.5.1",
     "eslint": "^8.2.0",
     "eslint-config-prettier": "^8.3.0",
     "eslint-plugin-prettier": "^4.0.0",
-    "prettier": "^2.4.1"
+    "html-webpack-plugin": "^5.5.0",
+    "prettier": "^2.4.1",
+    "style-loader": "^3.3.1",
+    "webpack": "^5.64.1",
+    "webpack-cli": "^4.9.1"
   }
 }

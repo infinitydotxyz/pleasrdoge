@@ -1,4 +1,7 @@
-function GameManager(size, InputManager, Actuator, ScoreManager) {
+import { Grid } from './grid';
+import { Tile } from './tile';
+
+export function GameManager(size, InputManager, Actuator, ScoreManager) {
   this.size = size; // Size of the grid
   this.inputManager = new InputManager();
   this.scoreManager = new ScoreManager();
