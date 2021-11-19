@@ -1,0 +1,8 @@
+.gridRow {
+  display: flex;
+
+  .gameProgress {
+    display: flex;
+    flex-direction: column;
+  }
+}
