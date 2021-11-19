@@ -1,14 +1,26 @@
 import styles from './styles.module.scss';
 import { Context } from '../../Context';
-import React, { useContext } from 'react';
+import React, { useContext, useEffect } from 'react';
 
 export const UnlockedColumn = () => {
-  const { state } = useContext(Context);
+  const { score, setScore } = useContext(Context);
+
+  useEffect(() => {
+    const onScroll = (event) => {
+      setScore(event.detail.score);
+    };
+
+    document.addEventListener('score', onScroll);
+
+    return () => {
+      document.removeEventListener('score', onScroll);
+    };
+  }, [setScore]);
 
   return (
     <div className={styles.main}>
       <div className={styles.item}>
-        <div>{state.score}</div>
+        <div>{score}</div>
       </div>
 
       <div className={styles.item}>

@@ -139,6 +139,13 @@ HTMLActuator.prototype.updateScore = function (score) {
   const difference = score - this.score;
   this.score = score;
 
+  // Dispatch the event.
+  document.dispatchEvent(
+    new CustomEvent('score', {
+      detail: { score },
+    })
+  );
+
   this.scoreContainer.textContent = this.score;
 
   if (difference > 0) {
