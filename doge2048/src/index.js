@@ -1,11 +1,17 @@
-import '../js/main.js';
+import React from 'react';
+import ReactDOM from 'react-dom';
+import './index.css';
+import App from './App';
+import reportWebVitals from './reportWebVitals';
 
-import '../js/game_manager.js';
-import '../js/animframe_polyfill.js';
-import '../js/keyboard_input_manager.js';
-import '../js/html_actuator.js';
-import '../js/grid.js';
-import '../js/tile.js';
-import '../js/local_score_manager.js';
-import '../js/application.js';
-import '../style/main.css';
+ReactDOM.render(
+  <React.StrictMode>
+    <App />
+  </React.StrictMode>,
+  document.getElementById('root')
+);
+
+// If you want to start measuring performance in your app, pass a function
+// to log results (for example: reportWebVitals(console.log))
+// or send to an analytics endpoint. Learn more: https://bit.ly/CRA-vitals
+reportWebVitals();
