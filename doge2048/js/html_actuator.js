@@ -128,8 +128,8 @@ HTMLActuator.prototype.normalizePosition = function (position) {
 };
 
 HTMLActuator.prototype.positionClass = function (position) {
-  position = this.normalizePosition(position);
-  return 'tile-position-' + position.x + '-' + position.y;
+  const pos = this.normalizePosition(position);
+  return 'tile-position-' + pos.x + '-' + pos.y;
 };
 
 HTMLActuator.prototype.updateScore = function (score) {

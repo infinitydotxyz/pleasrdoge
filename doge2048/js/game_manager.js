@@ -214,16 +214,17 @@ GameManager.prototype.buildTraversals = function (vector) {
 
 GameManager.prototype.findFarthestPosition = function (cell, vector) {
   let previous;
+  let next = cell;
 
   // Progress towards the vector direction until an obstacle is found
   do {
-    previous = cell;
-    cell = { x: previous.x + vector.x, y: previous.y + vector.y };
-  } while (this.grid.withinBounds(cell) && this.grid.cellAvailable(cell));
+    previous = next;
+    next = { x: previous.x + vector.x, y: previous.y + vector.y };
+  } while (this.grid.withinBounds(next) && this.grid.cellAvailable(next));
 
   return {
     farthest: previous,
-    next: cell, // Used to check if a merge is required
+    next: next, // Used to check if a merge is required
   };
 };
 
