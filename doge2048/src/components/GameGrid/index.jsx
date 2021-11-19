@@ -16,7 +16,7 @@ export const GameGrid = () => {
           <div className="info">
             <p>
               Use your arrow keys or swipe to combine similar Doges and score
-              points!{' '}
+              points!
             </p>
             <p>Unlock all 11 doges to win!</p>
             <p>

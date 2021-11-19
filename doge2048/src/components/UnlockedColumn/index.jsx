@@ -1,10 +1,14 @@
 import styles from './styles.module.scss';
+import { Context } from '../../Context';
+import React, { useContext } from 'react';
 
 export const UnlockedColumn = () => {
+  const { state } = useContext(Context);
+
   return (
     <div className={styles.main}>
       <div className={styles.item}>
-        <div>1024</div>
+        <div>{state.score}</div>
       </div>
 
       <div className={styles.item}>
