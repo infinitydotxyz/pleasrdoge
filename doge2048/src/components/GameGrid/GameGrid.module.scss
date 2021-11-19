@@ -1,5 +1,16 @@
 .gridRow {
   display: flex;
+  width: 100%;
+  margin-top: 40px;
+
+  .rightSide {
+    position: relative;
+    padding: 20px 20px;
+  }
+
+  .leftSide {
+    position: relative;
+  }
 
   .gameProgress {
     display: flex;

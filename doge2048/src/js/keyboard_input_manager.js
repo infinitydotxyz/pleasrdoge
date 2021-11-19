@@ -75,19 +75,27 @@ KeyboardInputManager.prototype.listen = function () {
   let touchStartClientX, touchStartClientY;
   const gameContainer = document.getElementsByClassName('game-container')[0];
 
-  gameContainer.addEventListener('touchstart', function (event) {
-    if (event.touches.length > 1) {
-      return;
-    }
+  gameContainer.addEventListener(
+    'touchstart',
+    function (event) {
+      if (event.touches.length > 1) {
+        return;
+      }
 
-    touchStartClientX = event.touches[0].clientX;
-    touchStartClientY = event.touches[0].clientY;
-    event.preventDefault();
-  });
+      touchStartClientX = event.touches[0].clientX;
+      touchStartClientY = event.touches[0].clientY;
+      event.preventDefault();
+    },
+    { passive: true }
+  );
 
-  gameContainer.addEventListener('touchmove', function (event) {
-    event.preventDefault();
-  });
+  gameContainer.addEventListener(
+    'touchmove',
+    function (event) {
+      event.preventDefault();
+    },
+    { passive: true }
+  );
 
   gameContainer.addEventListener('touchend', function (event) {
     if (event.touches.length > 0) {
