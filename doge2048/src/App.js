@@ -8,7 +8,7 @@ import './js/tile.js';
 import './js/local_score_manager.js';
 import './js/application.js';
 import './style/main.css';
-import { GameGrid } from './components/GameGrid/GameGrid';
+import { GameGrid } from './components/GameGrid';
 
 function App() {
   return (
@@ -16,7 +16,8 @@ function App() {
       <div className="container">
         <div className="heading">
           <h1 className="title">
-            DOGE<span style={{ color: 'red' }}>2</span>
+            <span>DOGE</span>
+            <span style={{ color: 'red' }}>2</span>
             <span style={{ color: '#00FF00' }}>0</span>
             <span style={{ color: 'blue' }}>4</span>
             <span style={{ color: '#00FFFF' }}>8</span>

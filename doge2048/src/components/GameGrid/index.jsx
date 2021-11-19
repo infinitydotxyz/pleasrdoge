@@ -1,9 +1,11 @@
-import styles from './GameGrid.module.scss';
+import styles from './styles.module.scss';
 import { UnlockedColumn } from '../UnlockedColumn';
-
+import { ToggleSwitch } from '../ToggleSwitch';
 export const GameGrid = () => {
   return (
     <div className={styles.gridRow}>
+      <ToggleSwitch />
+
       <div className={styles.leftSide}>
         <div className="game-container">
           <div className="doge-says">

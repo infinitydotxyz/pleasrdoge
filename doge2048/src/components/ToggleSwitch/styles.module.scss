@@ -1,0 +1,24 @@
+.main {
+  padding: 14px;
+  background-color: rgba(0, 0, 0, 0.05);
+  border-radius: 6px;
+  margin-right: 20px;
+
+  .bg {
+    display: flex;
+    background-color: white;
+    border-radius: 6px;
+
+    .off,
+    .on {
+      border-radius: 6px;
+      padding: 10px;
+      color: #ccc;
+      font-weight: bold;
+    }
+
+    .on {
+      background-color: black;
+    }
+  }
+}

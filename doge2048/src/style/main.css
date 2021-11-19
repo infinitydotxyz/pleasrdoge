@@ -116,8 +116,8 @@ a:hover {
 }
 
 .scores-container {
-  float: right;
-  text-align: right;
+  display: inline-block;
+  margin-left: 20px;
 }
 
 .game-container .doge-says {
@@ -139,8 +139,6 @@ a:hover {
 .info-container {
   position: relative;
   cursor: pointer;
-  left: 50%;
-  margin-left: -32px;
   margin-bottom: 10px;
 }
 
@@ -261,8 +259,9 @@ hr {
 }
 
 .container {
-  width: 500px;
-  margin: 0 auto;
+  display: flex;
+  flex-direction: column;
+  align-items: center;
 }
 
 @keyframes fade-in {
@@ -610,8 +609,9 @@ hr {
   }
 
   .container {
-    width: 280px;
-    margin: 0 auto;
+    display: flex;
+    flex-direction: column;
+    align-items: center;
   }
 
   .score-container,

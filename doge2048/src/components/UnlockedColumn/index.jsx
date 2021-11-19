@@ -1,4 +1,4 @@
-import styles from './UnlockedColumn.module.scss';
+import styles from './styles.module.scss';
 
 export const UnlockedColumn = () => {
   return (
