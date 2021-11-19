@@ -8,7 +8,7 @@ import './js/tile.js';
 import './js/local_score_manager.js';
 import './js/application.js';
 import './style/main.css';
-import { GameGrid } from './components/GameGrid';
+import { MainContent } from './components/MainContent';
 
 function App() {
   return (
@@ -28,7 +28,7 @@ function App() {
           </div>
         </div>
 
-        <GameGrid />
+        <MainContent />
 
         <p className="game-explanation">
           Use your arrow keys or swipe to combine similar Doges and score

@@ -1,11 +1,11 @@
+import React from 'react';
 import styles from './styles.module.scss';
 import { UnlockedColumn } from '../UnlockedColumn';
-import { ToggleSwitch } from '../ToggleSwitch';
+import KeyboardInputShared from '../../js/keyboard_input_manager';
+
 export const GameGrid = () => {
   return (
     <div className={styles.gridRow}>
-      <ToggleSwitch />
-
       <div className={styles.leftSide}>
         <div className="game-container">
           <div className="doge-says">
@@ -58,7 +58,14 @@ export const GameGrid = () => {
             <p></p>
             <div className="lower">
               <div className="keep-playing-button btn">Keep going</div>
-              <div className="retry-button btn">Try again</div>
+              <div
+                className="retry-button btn"
+                onClick={() => {
+                  KeyboardInputShared.restart();
+                }}
+              >
+                Try again
+              </div>
             </div>
           </div>
           <div className="tile-container"></div>
