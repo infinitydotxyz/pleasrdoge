@@ -1,13 +1,8 @@
 import './App.css';
-import './js/game_manager.js';
-import './js/animframe_polyfill.js';
-import './js/keyboard_input_manager.js';
-import './js/html_actuator.js';
-import './js/grid.js';
-import './js/tile.js';
-import './js/local_score_manager.js';
-import './js/application.js';
 import './style/main.css';
+import './js/animframe_polyfill.js';
+import './js/application.js';
+
 import { MainContent } from './components/MainContent';
 
 function App() {
@@ -29,14 +24,6 @@ function App() {
         </div>
 
         <MainContent />
-
-        <p className="game-explanation">
-          Use your arrow keys or swipe to combine similar Doges and score
-          points!
-        </p>
-        <div className="info-container">
-          <div className="show-info btn">INFO</div>
-        </div>
       </div>
     </div>
   );

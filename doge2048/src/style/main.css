@@ -137,29 +137,14 @@ a:hover {
 }
 
 .info-container {
-  position: relative;
   cursor: pointer;
-  margin-bottom: 10px;
-}
-
-.info-container,
-.hide-info {
+  margin: 10px 0;
   background: #f0f;
   padding: 10px 15px;
-  height: 10px;
-  line-height: 10px;
   font-size: 10px;
   font-weight: bold;
   border-radius: 3px;
   color: white;
-  margin-top: 8px;
-  width: 36px;
-  text-align: center;
-}
-.info-container a,
-.hide-info a {
-  color: #fff;
-  text-decoration: none;
 }
 
 .game-container .info {

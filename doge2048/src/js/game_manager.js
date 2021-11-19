@@ -1,12 +1,12 @@
 import { Grid } from './grid';
 import { Tile } from './tile';
-import KeyboardInputShared from './keyboard_input_manager';
+import { KeyboardInputManager } from './keyboard_input_manager';
 import { HTMLActuator } from './html_actuator';
 import { LocalScoreManager } from './local_score_manager';
 
 export function GameManager(size) {
   this.size = size; // Size of the grid
-  this.inputManager = KeyboardInputShared;
+  this.inputManager = new KeyboardInputManager();
   this.scoreManager = new LocalScoreManager();
   this.actuator = new HTMLActuator();
 

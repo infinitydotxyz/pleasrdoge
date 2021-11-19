@@ -22,13 +22,6 @@ import dogeSunglasses2 from '../img/114/doge-sunglasses-114.gif';
 import dogeShake2 from '../img/114/doge-shake-114.gif';
 import dogeWink2 from '../img/114/doge-wink-114.gif';
 
-import { GameManager } from './game_manager';
-
-// Wait till the browser is ready to render the game (avoids glitches)
-window.requestAnimationFrame(function () {
-  new GameManager(4);
-});
-
 const imageList = [
   dogeDerp,
   dogeFat,

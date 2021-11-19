@@ -67,10 +67,6 @@ KeyboardInputManager.prototype.listen = function () {
   showInfo.addEventListener('click', this.showInfo.bind(this));
   showInfo.addEventListener('touchend', this.showInfo.bind(this));
 
-  // var hideInfo = document.querySelector(".hide-info");
-  // hideInfo.addEventListener("click", this.hideInfo.bind(this));
-  // hideInfo.addEventListener("touchend", this.hideInfo.bind(this));
-
   // Listen to swipe events
   let touchStartClientX, touchStartClientY;
   const gameContainer = document.getElementsByClassName('game-container')[0];

@@ -1,9 +1,11 @@
-import React from 'react';
+import React, { useEffect } from 'react';
 import styles from './styles.module.scss';
-import { UnlockedColumn } from '../UnlockedColumn';
-import KeyboardInputShared from '../../js/keyboard_input_manager';
+import { GameManager } from '../../js/game_manager';
 
 export const GameGrid = () => {
+  useEffect(() => {
+    new GameManager(4);
+  });
   return (
     <div className={styles.gridRow}>
       <div className={styles.leftSide}>
@@ -58,14 +60,7 @@ export const GameGrid = () => {
             <p></p>
             <div className="lower">
               <div className="keep-playing-button btn">Keep going</div>
-              <div
-                className="retry-button btn"
-                onClick={() => {
-                  KeyboardInputShared.restart();
-                }}
-              >
-                Try again
-              </div>
+              <div className="retry-button btn">Try again</div>
             </div>
           </div>
           <div className="tile-container"></div>
@@ -97,10 +92,14 @@ export const GameGrid = () => {
             </div>
           </div>
         </div>
-      </div>
 
-      <div className={styles.rightSide}>
-        <UnlockedColumn />
+        <p className="game-explanation">
+          Use your arrow keys or swipe to combine similar Doges and score
+          points!
+        </p>
+        <div className="info-container">
+          <div className="show-info btn">INFO</div>
+        </div>
       </div>
     </div>
   );
