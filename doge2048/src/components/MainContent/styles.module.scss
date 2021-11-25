@@ -4,4 +4,13 @@
   align-items: flex-start;
   justify-content: center;
   margin-top: 20px;
+
+  .rightSide {
+    position: relative;
+    display: flex;
+    flex-direction: column;
+    justify-content: stretch;
+
+    padding: 0px 30px;
+  }
 }

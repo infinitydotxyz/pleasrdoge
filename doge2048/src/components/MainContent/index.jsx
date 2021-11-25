@@ -4,6 +4,7 @@ import { ToggleSwitch } from '../ToggleSwitch';
 import { GameGrid } from '../GameGrid';
 import { NFTView } from '../NFTView';
 import { UnlockedColumn } from '../UnlockedColumn';
+import Button from '@mui/material/Button';
 
 export const MainContent = () => {
   const [nftMode, setNftMode] = React.useState(false);
@@ -21,6 +22,8 @@ export const MainContent = () => {
 
       <div className={styles.rightSide}>
         <UnlockedColumn />
+        <div style={{ height: 20 }} />
+        <Button variant="contained">Save Progress</Button>
       </div>
     </div>
   );
