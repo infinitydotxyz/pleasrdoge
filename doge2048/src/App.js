@@ -27,6 +27,7 @@ const theme = createTheme({
           fontSize: '1rem',
           boxShadow: 'none',
           borderRadius: 10,
+          textTransform: 'none',
         },
       },
     },
