@@ -22,7 +22,7 @@ export const UnlockedColumn = () => {
 
   for (let i = 0; i < 15; i++) {
     grid.push(
-      <div className={styles.item}>
+      <div key={`${i} key`} className={styles.item}>
         <div
           style={{ backgroundImage: `url(${dogeHat})` }}
           className={styles.background}

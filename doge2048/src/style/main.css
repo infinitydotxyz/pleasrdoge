@@ -136,38 +136,6 @@ a:hover {
   animation-fill-mode: both;
 }
 
-.info-container {
-  cursor: pointer;
-  margin: 10px 0;
-  background: #f0f;
-  padding: 10px 15px;
-  font-size: 10px;
-  font-weight: bold;
-  border-radius: 3px;
-  color: white;
-}
-
-.game-container .info {
-  display: none;
-  position: absolute;
-  overflow: auto;
-  top: 0;
-  right: 0;
-  bottom: 0;
-  left: 0;
-  background: rgba(255, 255, 255, 0.9);
-  z-index: 100;
-  border-radius: 6px;
-  text-align: center;
-  animation-fill-mode: both;
-}
-.game-container .info p {
-  position: relative;
-  font-size: 16px;
-  padding: 10px 20px 10px 20px;
-  font-weight: bold;
-}
-
 .score-container,
 .best-container {
   position: relative;
@@ -571,12 +539,6 @@ hr {
   margin-bottom: 0;
 }
 
-.game-explanation {
-  margin-top: 0px;
-  text-align: center;
-  font-size: 14px;
-}
-
 @media screen and (max-width: 480px) {
   html,
   body {
@@ -608,18 +570,6 @@ hr {
 
   .heading {
     margin-bottom: 10px;
-  }
-
-  .game-explanation {
-    display: none;
-  }
-
-  .game-explanation {
-    margin-top: 10px;
-    height: 0;
-    padding-top: 10px;
-    padding-bottom: 20px;
-    /*  font-size:12px;*/
   }
 
   .game-container {
@@ -882,11 +832,6 @@ hr {
 
   .COINWIDGETCOM_CONTAINER {
     display: none !important;
-  }
-
-  .game-container .info p {
-    font-size: 12px;
-    padding: 5px 10px 5px 10px;
   }
 
   .game-container {

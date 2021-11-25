@@ -63,10 +63,6 @@ KeyboardInputManager.prototype.listen = function () {
   keepPlaying.addEventListener('click', this.keepPlaying.bind(this));
   keepPlaying.addEventListener('touchend', this.keepPlaying.bind(this));
 
-  const showInfo = document.querySelector('.info-container');
-  showInfo.addEventListener('click', this.showInfo.bind(this));
-  showInfo.addEventListener('touchend', this.showInfo.bind(this));
-
   // Listen to swipe events
   let touchStartClientX, touchStartClientY;
   const gameContainer = document.getElementsByClassName('game-container')[0];
@@ -114,12 +110,4 @@ KeyboardInputManager.prototype.restart = function (event) {
 KeyboardInputManager.prototype.keepPlaying = function (event) {
   event.preventDefault();
   this.emit('keepPlaying');
-};
-KeyboardInputManager.prototype.showInfo = function (event) {
-  event.preventDefault();
-  this.emit('showInfo');
-};
-KeyboardInputManager.prototype.hideInfo = function (event) {
-  event.preventDefault();
-  this.emit('hideInfo');
 };

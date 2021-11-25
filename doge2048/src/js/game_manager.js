@@ -15,8 +15,6 @@ export function GameManager(size) {
   this.inputManager.on('move', this.move.bind(this));
   this.inputManager.on('restart', this.restart.bind(this));
   this.inputManager.on('keepPlaying', this.keepPlaying.bind(this));
-  this.inputManager.on('showInfo', this.showInfo.bind(this));
-  this.inputManager.on('hideInfo', this.hideInfo.bind(this));
 
   this.setup();
 }
@@ -31,14 +29,6 @@ GameManager.prototype.restart = function () {
 GameManager.prototype.keepPlaying = function () {
   this.keepPlaying = true;
   this.actuator.continue();
-};
-
-GameManager.prototype.showInfo = function () {
-  this.actuator.showInfo();
-};
-
-GameManager.prototype.hideInfo = function () {
-  this.actuator.hideInfo();
 };
 
 GameManager.prototype.isGameTerminated = function () {

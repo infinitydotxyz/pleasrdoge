@@ -5,6 +5,20 @@
   justify-content: center;
   margin-top: 20px;
 
+  .gameColumn {
+    display: flex;
+    flex-direction: column;
+  }
+
+  .buttons {
+    margin-top: 20px;
+    display: flex;
+
+    .btn {
+      flex: 1;
+    }
+  }
+
   .rightSide {
     position: relative;
     display: flex;
