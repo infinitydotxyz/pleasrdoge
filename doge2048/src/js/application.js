@@ -47,6 +47,9 @@ const imageList = [
   dogeShake2,
   dogeWink2,
 ];
+
+// this was in the original code, no idea why, preloading images for less jank?
+
 for (let i = 0; i < imageList.length; i++) {
   const imageObject = new Image();
   imageObject.src = imageList[i];
