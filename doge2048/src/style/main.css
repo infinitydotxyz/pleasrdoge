@@ -16,12 +16,6 @@ body {
   margin: 20px 0 0 0;
 }
 
-.heading:after {
-  content: '';
-  display: block;
-  clear: both;
-}
-
 h1.title {
   color: #333;
   font-size: 48px;
@@ -566,10 +560,6 @@ hr {
     margin-top: 0;
     padding: 15px 10px;
     min-width: 40px;
-  }
-
-  .heading {
-    margin-bottom: 10px;
   }
 
   .game-container {

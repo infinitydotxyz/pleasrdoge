@@ -1,0 +1,30 @@
+.main {
+  display: flex;
+  width: 100%;
+  align-items: flex-start;
+  justify-content: center;
+  margin-bottom: 20px;
+
+  .gameColumn {
+    display: flex;
+    flex-direction: column;
+  }
+
+  .buttons {
+    margin-top: 20px;
+    display: flex;
+
+    .btn {
+      flex: 1;
+    }
+  }
+
+  .rightSide {
+    position: relative;
+    display: flex;
+    flex-direction: column;
+    justify-content: stretch;
+
+    padding: 0px 30px;
+  }
+}

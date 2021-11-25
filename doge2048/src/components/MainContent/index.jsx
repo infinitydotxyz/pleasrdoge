@@ -1,12 +1,14 @@
 import React from 'react';
 import styles from './styles.module.scss';
 import { ToggleSwitch } from '../ToggleSwitch';
+import { Header } from '../Header';
 import { GameGrid } from '../GameGrid';
 import { NFTView } from '../NFTView';
 import { UnlockedColumn } from '../UnlockedColumn';
 import { Information } from '../Information';
 import { Instructions } from '../Instructions';
 import Button from '@mui/material/Button';
+import { TokensEarned } from '../TokensEarned';
 
 export const MainContent = () => {
   const [nftMode, setNftMode] = React.useState(false);
@@ -36,6 +38,7 @@ export const MainContent = () => {
       />
 
       <div className={styles.gameColumn}>
+        <Header />
         {contents}
 
         <div className={styles.buttons}>
@@ -64,6 +67,7 @@ export const MainContent = () => {
       </div>
 
       <div className={styles.rightSide}>
+        <TokensEarned />
         <UnlockedColumn />
         <div style={{ height: 20 }} />
         <Button variant="contained">Save Progress</Button>
