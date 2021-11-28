@@ -13,9 +13,11 @@
   .buttons {
     margin-top: 20px;
     display: flex;
+    justify-content: center;
 
     .btn {
       flex: 1;
+      max-width: 300px;
     }
   }
 
