@@ -1,9 +1,10 @@
-import { createWriteStream, readdir, mkdir } from 'fs';
+import { createWriteStream, readdirSync, mkdirSync } from 'fs';
 import pkg from 'canvas';
+import sizeOf from 'image-size';
 
 const { createCanvas, loadImage } = pkg;
 
-const saveFile = async (outPath, eyeImage) => {
+const saveFile = async ({ outPath, eyeImage, hatImage, glassesImage }) => {
   try {
     const source = './images/doge.png';
     const canvas = createCanvas(800, 800);
@@ -12,6 +13,7 @@ const saveFile = async (outPath, eyeImage) => {
     let image = await loadImage(source);
     ctx.drawImage(image, 0, 0);
 
+    // Stars on eyes
     if (eyeImage) {
       const size = 120;
       const lx = 240;
@@ -25,6 +27,34 @@ const saveFile = async (outPath, eyeImage) => {
       ctx.drawImage(image, rx, ry, size, size);
     }
 
+    // Hats
+    if (hatImage) {
+      const size = 400;
+      const x = 220;
+      const y = 20;
+
+      image = await loadImage(hatImage);
+      ctx.drawImage(image, x, y, size, size);
+    }
+
+    // Glasses
+    if (glassesImage) {
+      const dimensions = sizeOf(glassesImage);
+
+      const scale = 0.82;
+      const x = 220;
+      const y = 300 - dimensions.height;
+
+      image = await loadImage(glassesImage);
+      ctx.drawImage(
+        image,
+        x,
+        y,
+        dimensions.width * scale,
+        dimensions.height * scale
+      );
+    }
+
     canvas.createPNGStream().pipe(createWriteStream(outPath));
   } catch (err) {
     console.log(err);
@@ -32,35 +62,36 @@ const saveFile = async (outPath, eyeImage) => {
   }
 };
 
-const main = () => {
-  mkdir('./output', { recursive: true }, (err) => {
-    console.log(err);
+const filesInDir = (path) => {
+  const list = readdirSync(path, { withFileTypes: true });
+
+  return list.filter((entry) => {
+    entry.path = `${path}/${entry.name}`;
+    return entry.isFile;
   });
+};
 
-  const path = './images/Stars';
+const main = () => {
+  mkdirSync('./output', { recursive: true });
 
-  readdir(path, { withFileTypes: true }, (err, entries) => {
-    if (err) {
-      throw err;
-    }
+  const stars = filesInDir('./images/Stars');
+  // const hats = filesInDir('./images/Hats');
+  const glasses = filesInDir('./images/Glasses');
 
-    // files object contains all files names
-    // log them on console
-    entries.forEach((entry) => {
-      if (entry.isFile) {
-        saveFile(`./output/${entry.name}.png`, `${path}/${entry.name}`);
-      } else {
-        // sdf
-      }
-      console.log(entry);
+  // files object contains all files names
+  // log them on console
+  // hats.forEach((hatEntry) => {
+  stars.forEach((entry) => {
+    glasses.forEach((glassesEntry) => {
+      saveFile({
+        outPath: `./output/${entry.name + glassesEntry.name}`,
+        eyeImage: entry.path,
+        // hatImage: hatEntry.path,
+        glassesImage: glassesEntry.path,
+      });
     });
   });
-
-  // saveFile('./output/test.png', './images/Stars/Orange.png');
-  // mkdir('./output/fuck', { recursive: true }, (err) => {
-  //   console.log(err);
   // });
-  // saveFile('./output/fuck/test.png');
 };
 
 main();

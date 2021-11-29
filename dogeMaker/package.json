@@ -4,10 +4,11 @@
   "description": "",
   "main": "index.js",
   "scripts": {
-    "start": "rm -r ./output && node ./index.js"
+    "start": "(rm -r ./output || true) && node ./index.js"
   },
   "dependencies": {
-    "canvas": "^2.8.0"
+    "canvas": "^2.8.0",
+    "image-size": "^1.0.0"
   },
   "author": "",
   "license": "ISC",
