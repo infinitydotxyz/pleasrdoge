@@ -1,0 +1,59 @@
+@mixin imgBase {
+  position: absolute;
+  background-size: contain;
+  background-repeat: no-repeat;
+}
+
+.capture {
+  width: 800px;
+  height: 800px;
+  position: relative;
+  overflow: hidden;
+
+  .hero {
+    position: absolute;
+    top: 0;
+    bottom: 0;
+    left: 0;
+    right: 0;
+    background-image: url('../../img/doge/doge.png');
+    background-position: top center;
+    background-size: cover;
+  }
+
+  .content {
+    .leftEye {
+      @include imgBase();
+      top: 220px;
+      left: 240px;
+
+      height: 120px;
+      width: 120px;
+    }
+
+    .rightEye {
+      @include imgBase();
+      top: 250px;
+      left: 375px;
+
+      height: 120px;
+      width: 120px;
+    }
+
+    .hat {
+      @include imgBase();
+      top: 20px;
+      left: 220px;
+      height: 400px;
+      width: 400px;
+    }
+
+    .neck {
+      @include imgBase();
+      top: 460px;
+      left: 220px;
+      height: 450px;
+      width: 450px;
+    }
+  }
+}
