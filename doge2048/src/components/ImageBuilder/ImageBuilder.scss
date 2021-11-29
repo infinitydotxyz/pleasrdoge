@@ -1,0 +1,107 @@
+#capture {
+  width: 1200px;
+  height: 600px;
+  position: relative;
+  overflow: hidden;
+
+  .hero {
+    z-index: -20;
+    position: absolute;
+    top: 0;
+    bottom: 0;
+    left: 0;
+    right: 0;
+    background-image: url('../../img/doge/doge.png');
+    // background-image: url('./images/catalina.png');
+    background-position: top center;
+    background-size: cover;
+  }
+
+  .heroblack {
+    z-index: -11;
+    position: absolute;
+    top: 0;
+    bottom: 0;
+    left: 0;
+    right: 0;
+    background-color: rgba(0, 0, 0, 0.6);
+  }
+
+  $c1: rgba(255, 155, 155, 1);
+  $c2: rgba(255, 155, 155, 1);
+
+  .newversion {
+    z-index: 10;
+    position: absolute;
+    width: 100%;
+    padding: 20px 20px;
+    top: 90px;
+    left: -490px;
+    background: #f11;
+    color: #fff;
+    font-weight: 900;
+    letter-spacing: 0;
+    text-transform: uppercase;
+    text-shadow: 0 2px 3px black;
+    // text-shadow: 2px 2px 0px $c1, 2px 4px 0px $c2, 2px 6px 0px $c1,
+    //   2px 8px 0px $c2;
+    font-size: 3em;
+    transform: rotate(-45deg);
+  }
+
+  .content {
+    z-index: 20;
+    position: absolute;
+    top: 0;
+    bottom: 0;
+    left: 0;
+    right: 0;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    font-size: 2em;
+
+    .header {
+      display: flex;
+      align-items: center;
+      flex-direction: column;
+      font-family: Audiowide;
+
+      .title {
+        color: rgba(255, 255, 255, 0.8);
+
+        font-size: 1.5em;
+        font-weight: 800;
+        text-shadow: 0 2px 9px black;
+      }
+
+      .product {
+        color: rgba(255, 255, 255, 0.9);
+
+        font-family: Audiowide;
+        font-size: 2.4em;
+        font-weight: 800;
+        text-shadow: 0 2px 9px black;
+      }
+
+      .subtitle {
+        color: rgba(255, 255, 255, 0.8);
+
+        font-size: 1em;
+        font-weight: 300;
+        text-shadow: 0 2px 9px black;
+      }
+
+      .icon {
+        position: relative;
+        top: -14px;
+        height: 168px;
+        width: 168px;
+        background-image: url('../../img/doge/doge.png');
+        background-size: cover;
+        opacity: 0.9;
+        text-shadow: 0 0 0 white;
+      }
+    }
+  }
+}

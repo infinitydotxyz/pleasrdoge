@@ -5,6 +5,7 @@ import { Header } from '../Header';
 import { GameGrid } from '../GameGrid';
 import { NFTView } from '../NFTView';
 import { UnlockedColumn } from '../UnlockedColumn';
+import { ImageBuilder } from '../ImageBuilder';
 import { Instructions } from '../Instructions';
 import Button from '@mui/material/Button';
 import { TokensEarned } from '../TokensEarned';
@@ -48,6 +49,8 @@ export const MainContent = () => {
             Instructions
           </Button>
         </div>
+
+        <ImageBuilder />
       </div>
 
       <div className={styles.rightSide}>
