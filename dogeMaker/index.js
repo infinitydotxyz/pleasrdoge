@@ -1,8 +1,11 @@
-import { createWriteStream, readdirSync, mkdirSync } from 'fs';
+import { readdirSync, writeFileSync, mkdirSync } from 'fs';
 import pkg from 'canvas';
 const { createCanvas, loadImage } = pkg;
 
 const imgCache = {};
+const canvas = createCanvas(800, 800);
+const ctx = canvas.getContext('2d');
+let cnt = 0;
 
 const loadImg = async (path) => {
   let result = imgCache[path];
@@ -16,9 +19,60 @@ const loadImg = async (path) => {
   return result;
 };
 
-let cnt = 0;
+const skipCombo = (props) => {
+  const {
+    starImage,
+    heartImage,
+    hatImage,
+    glassesImage,
+    bowTieImage,
+    laserImage,
+    crownImage,
+    chainImage,
+  } = props;
+
+  let eyeCnt = 0;
+  if (glassesImage) {
+    eyeCnt++;
+  }
+  if (starImage) {
+    eyeCnt++;
+  }
+  if (heartImage) {
+    eyeCnt++;
+  }
+  if (laserImage) {
+    eyeCnt++;
+  }
+
+  let hatCnt = 0;
+  if (crownImage) {
+    hatCnt++;
+  }
+  if (hatImage) {
+    hatCnt++;
+  }
+
+  let neckCnt = 0;
+  if (bowTieImage) {
+    neckCnt++;
+  }
+  if (chainImage) {
+    neckCnt++;
+  }
+
+  if (eyeCnt > 1 || hatCnt > 1 || neckCnt > 1) {
+    return true;
+  }
+
+  return false;
+};
 
 const saveFile = async (props) => {
+  if (skipCombo(props)) {
+    return;
+  }
+
   const {
     dogeImage,
     outputPath,
@@ -27,91 +81,75 @@ const saveFile = async (props) => {
     hatImage,
     glassesImage,
     bowTieImage,
+    laserImage,
+    crownImage,
+    chainImage,
   } = props;
 
-  if (glassesImage) {
-    if (starImage || heartImage) {
-      return;
-    }
-  } else {
-    if (starImage && heartImage) {
-      return;
-    }
-  }
+  ++cnt;
 
-  cnt++;
+  if (cnt % 100 === 0) {
+    console.log(cnt);
+  }
 
   try {
     let image;
-    let canvas = createCanvas(800, 800);
-    let ctx = canvas.getContext('2d');
 
+    ctx.fillStyle = '#FFFFFF';
+    ctx.fillRect(0, 0, 800, 800);
     ctx.drawImage(dogeImage, 0, 0);
 
     // Stars on eyes
     if (starImage) {
-      const size = 120;
-      const lx = 240;
-      const ly = 220;
-      const rx = 375;
-      const ry = 250;
-
       image = await loadImg(starImage);
-      ctx.drawImage(image, lx, ly, size, size);
-
-      ctx.drawImage(image, rx, ry, size, size);
+      ctx.drawImage(image, 0, 0);
     }
 
     // Stars on eyes
     if (heartImage) {
-      const size = 120;
-      const lx = 240;
-      const ly = 220;
-      const rx = 375;
-      const ry = 250;
-
       image = await loadImg(heartImage);
-      ctx.drawImage(image, lx, ly, size, size);
-
-      ctx.drawImage(image, rx, ry, size, size);
+      ctx.drawImage(image, 0, 0);
     }
 
     // Hats
     if (hatImage) {
-      const scale = 0.82;
-      const x = 130;
-      const y = 10;
-
       image = await loadImg(hatImage);
-      ctx.drawImage(image, x, y, image.width * scale, image.height * scale);
+      ctx.drawImage(image, 0, 0);
     }
 
     // Glasses
     if (glassesImage) {
-      const scale = 0.82;
-      const x = 220;
-      const y = 300;
-
       image = await loadImg(glassesImage);
-
-      ctx.drawImage(image, x, y, image.width * scale, image.height * scale);
+      ctx.drawImage(image, 0, 0);
     }
 
     // Bow Ties
     if (bowTieImage) {
-      const scale = 0.32;
-      const x = 220;
-      const y = 500;
-
       image = await loadImg(bowTieImage);
-      ctx.drawImage(image, x, y, image.width * scale, image.height * scale);
+      ctx.drawImage(image, 0, 0);
     }
 
-    canvas.createPNGStream().pipe(createWriteStream(outputPath));
+    // Crowns
+    if (crownImage) {
+      image = await loadImg(crownImage);
+      ctx.drawImage(image, 0, 0);
+    }
 
-    canvas = null;
-    image = null;
-    ctx = null;
+    // Laser eyes
+    if (laserImage) {
+      image = await loadImg(laserImage);
+      ctx.drawImage(image, 0, 0);
+    }
+
+    // Chains
+    if (chainImage) {
+      image = await loadImg(chainImage);
+      ctx.drawImage(image, 0, 0);
+    }
+
+    let buffer = canvas.toBuffer('image/jpeg', { quality: 0.3 });
+    writeFileSync(outputPath, buffer);
+    buffer = null;
   } catch (err) {
     console.log(err);
     process.exit(1);
@@ -148,11 +186,14 @@ const pathForEntries = (entries) => {
 const main = async () => {
   mkdirSync('./output', { recursive: true });
 
-  const stars = filesInDir('./images/Stars', 's');
-  const hats = filesInDir('./images/Hats', 'h');
-  const glasses = filesInDir('./images/Glasses', 'g');
-  const bowTies = filesInDir('./images/Bow ties', 'b');
-  const hearts = filesInDir('./images/Hearts', 'r');
+  const stars = filesInDir('./images/Stars', 'star');
+  const hats = filesInDir('./images/Hats', 'hat');
+  const glasses = filesInDir('./images/Glasses', 'gls');
+  const bowTies = filesInDir('./images/Bows', 'bti');
+  const hearts = filesInDir('./images/Hearts', 'hrt');
+  const lasers = filesInDir('./images/Lasers', 'lsr');
+  const crowns = filesInDir('./images/Crowns', 'crwn');
+  const chains = filesInDir('./images/Chains', 'chn');
 
   // push blank on each list so we can have items without any hat/glasses/stars
   stars.push({});
@@ -160,38 +201,49 @@ const main = async () => {
   glasses.push({});
   bowTies.push({});
   hearts.push({});
+  lasers.push({});
+  crowns.push({});
+  chains.push({});
 
-  let max = 100000;
-
-  const dogeImage = await loadImg('./images/doge.png');
+  const dogeImage = await loadImg('./images/Doge.png');
 
   // files object contains all files names
   // log them on console
   for (const hatEntry of hats) {
     for (const starEntry of stars) {
       for (const glassesEntry of glasses) {
-        console.log(cnt);
-
         for (const tiesEntry of bowTies) {
           for (const heartEntry of hearts) {
-            const path = pathForEntries([
-              starEntry,
-              glassesEntry,
-              hatEntry,
-              tiesEntry,
-              heartEntry,
-            ]);
+            for (const laserEntry of lasers) {
+              for (const crownEntry of crowns) {
+                for (const chainEntry of chains) {
+                  const path = pathForEntries([
+                    starEntry,
+                    glassesEntry,
+                    hatEntry,
+                    tiesEntry,
+                    heartEntry,
+                    laserEntry,
+                    crownEntry,
+                    chainEntry,
+                  ]);
 
-            if (--max > 0) {
-              await saveFile({
-                dogeImage: dogeImage,
-                outputPath: `./output/${path}.png`,
-                starImage: starEntry.path,
-                heartImage: heartEntry.path,
-                hatImage: hatEntry.path,
-                glassesImage: glassesEntry.path,
-                bowTieImage: tiesEntry.path,
-              });
+                  if (cnt < 1000) {
+                    await saveFile({
+                      dogeImage: dogeImage,
+                      outputPath: `./output/${path}.jpeg`,
+                      starImage: starEntry.path,
+                      heartImage: heartEntry.path,
+                      hatImage: hatEntry.path,
+                      glassesImage: glassesEntry.path,
+                      bowTieImage: tiesEntry.path,
+                      laserImage: laserEntry.path,
+                      crownImage: crownEntry.path,
+                      chainImage: chainEntry.path,
+                    });
+                  }
+                }
+              }
             }
           }
         }
