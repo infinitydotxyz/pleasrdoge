@@ -29,6 +29,8 @@ const skipCombo = (props) => {
     laserImage,
     crownImage,
     chainImage,
+    // mouthImage,
+    diamondImage,
   } = props;
 
   let eyeCnt = 0;
@@ -42,6 +44,9 @@ const skipCombo = (props) => {
     eyeCnt++;
   }
   if (laserImage) {
+    eyeCnt++;
+  }
+  if (diamondImage) {
     eyeCnt++;
   }
 
@@ -74,6 +79,7 @@ const saveFile = async (props) => {
   }
 
   const {
+    backgrounds,
     dogeImage,
     outputPath,
     starImage,
@@ -84,11 +90,13 @@ const saveFile = async (props) => {
     laserImage,
     crownImage,
     chainImage,
+    mouthImage,
+    diamondImage,
   } = props;
 
   ++cnt;
 
-  if (cnt % 100 === 0) {
+  if (cnt % 200 === 0) {
     console.log(cnt);
   }
 
@@ -97,6 +105,11 @@ const saveFile = async (props) => {
 
     ctx.fillStyle = '#FFFFFF';
     ctx.fillRect(0, 0, 800, 800);
+
+    const bg = backgrounds[Math.floor(Math.random() * backgrounds.length)];
+    image = await loadImg(bg.path);
+    ctx.drawImage(image, 0, 0);
+
     ctx.drawImage(dogeImage, 0, 0);
 
     // Stars on eyes
@@ -126,6 +139,18 @@ const saveFile = async (props) => {
     // Bow Ties
     if (bowTieImage) {
       image = await loadImg(bowTieImage);
+      ctx.drawImage(image, 0, 0);
+    }
+
+    // Mouth
+    if (mouthImage) {
+      image = await loadImg(mouthImage);
+      ctx.drawImage(image, 0, 0);
+    }
+
+    // Diamond
+    if (diamondImage) {
+      image = await loadImg(diamondImage);
       ctx.drawImage(image, 0, 0);
     }
 
@@ -184,8 +209,11 @@ const pathForEntries = (entries) => {
 };
 
 const main = async () => {
+  const now = Date.now();
+
   mkdirSync('./output', { recursive: true });
 
+  const backgrounds = filesInDir('./images/Backgrounds', 'star');
   const stars = filesInDir('./images/Stars', 'star');
   const hats = filesInDir('./images/Hats', 'hat');
   const glasses = filesInDir('./images/Glasses', 'gls');
@@ -194,6 +222,8 @@ const main = async () => {
   const lasers = filesInDir('./images/Lasers', 'lsr');
   const crowns = filesInDir('./images/Crowns', 'crwn');
   const chains = filesInDir('./images/Chains', 'chn');
+  const diamonds = filesInDir('./images/Diamonds', 'dia');
+  const mouth = filesInDir('./images/Mouth', 'mth');
 
   // push blank on each list so we can have items without any hat/glasses/stars
   stars.push({});
@@ -204,8 +234,12 @@ const main = async () => {
   lasers.push({});
   crowns.push({});
   chains.push({});
+  diamonds.push({});
+  mouth.push({});
 
   const dogeImage = await loadImg('./images/Doge.png');
+
+  let duh = 0;
 
   // files object contains all files names
   // log them on console
@@ -217,30 +251,41 @@ const main = async () => {
             for (const laserEntry of lasers) {
               for (const crownEntry of crowns) {
                 for (const chainEntry of chains) {
-                  const path = pathForEntries([
-                    starEntry,
-                    glassesEntry,
-                    hatEntry,
-                    tiesEntry,
-                    heartEntry,
-                    laserEntry,
-                    crownEntry,
-                    chainEntry,
-                  ]);
+                  for (const diamondEntry of diamonds) {
+                    for (const mouthEntry of mouth) {
+                      duh++;
 
-                  if (cnt < 1000) {
-                    await saveFile({
-                      dogeImage: dogeImage,
-                      outputPath: `./output/${path}.jpeg`,
-                      starImage: starEntry.path,
-                      heartImage: heartEntry.path,
-                      hatImage: hatEntry.path,
-                      glassesImage: glassesEntry.path,
-                      bowTieImage: tiesEntry.path,
-                      laserImage: laserEntry.path,
-                      crownImage: crownEntry.path,
-                      chainImage: chainEntry.path,
-                    });
+                      if (cnt < 1000000000000000) {
+                        const path = pathForEntries([
+                          starEntry,
+                          glassesEntry,
+                          hatEntry,
+                          tiesEntry,
+                          heartEntry,
+                          laserEntry,
+                          crownEntry,
+                          chainEntry,
+                          diamondEntry,
+                          mouthEntry,
+                        ]);
+
+                        await saveFile({
+                          dogeImage: dogeImage,
+                          backgrounds: backgrounds,
+                          outputPath: `./output/${path}.jpeg`,
+                          starImage: starEntry.path,
+                          heartImage: heartEntry.path,
+                          hatImage: hatEntry.path,
+                          glassesImage: glassesEntry.path,
+                          bowTieImage: tiesEntry.path,
+                          laserImage: laserEntry.path,
+                          crownImage: crownEntry.path,
+                          chainImage: chainEntry.path,
+                          diamondImage: diamondEntry.path,
+                          mouthImage: mouthEntry.path,
+                        });
+                      }
+                    }
                   }
                 }
               }
@@ -251,7 +296,12 @@ const main = async () => {
     }
   }
 
+  // 16×4×14×7×17×30×11×5×3×11 = 5,805,676,800
+  console.log(`Total Loops: ${duh}`);
   console.log(`Total Images: ${cnt}`);
+
+  const diff = Date.now() - now;
+  console.log(diff / 1000 / 60);
 };
 
 main();
