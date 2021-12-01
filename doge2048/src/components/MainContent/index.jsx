@@ -30,6 +30,7 @@ export const MainContent = () => {
       <ToggleSwitch
         onChange={(value) => {
           setNftMode(value);
+          setShowInstructions(false);
         }}
       />
 
