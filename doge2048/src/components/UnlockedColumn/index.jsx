@@ -70,7 +70,7 @@ export const UnlockedColumn = () => {
           className={styles.background}
         />
 
-        {score < i * 200 && (
+        {score < i * 1000 && (
           <div className={styles.overlay}>
             <div className={styles.content}>
               <div className={styles.first}>{`L${i + 1}`}</div>
