@@ -1,7 +1,22 @@
 import styles from './styles.module.scss';
 import { Context } from '../../Context';
 import React, { useContext, useEffect } from 'react';
-import dogeHat from '../../img/212/doge-hat-212.gif';
+import doge from '../../img/doge.png';
+import blueStrips from '../../img/Backgrounds/blueStripes.gif';
+import clouds from '../../img/Backgrounds/clouds.gif';
+import gold from '../../img/Backgrounds/gold.gif';
+import greenScreen from '../../img/Backgrounds/greenScreen.png';
+import matrix from '../../img/Backgrounds/matrix.gif';
+import moon from '../../img/Backgrounds/moon.gif';
+import nightClub from '../../img/Backgrounds/nightClub.gif';
+import nyan from '../../img/Backgrounds/nyan.gif';
+import orange from '../../img/Backgrounds/orange.png';
+import pinkStripes from '../../img/Backgrounds/pinkStripes.gif';
+import pizza from '../../img/Backgrounds/pizza.gif';
+import purple from '../../img/Backgrounds/purple.png';
+import sushi from '../../img/Backgrounds/sushi.gif';
+import tacos from '../../img/Backgrounds/tacos.gif';
+import trippySwirl from '../../img/Backgrounds/trippySwirl.gif';
 
 export const UnlockedColumn = () => {
   const { score, setScore } = useContext(Context);
@@ -18,13 +33,40 @@ export const UnlockedColumn = () => {
     };
   }, [setScore]);
 
+  const backgroundForIndex = (index) => {
+    const images = [
+      purple,
+      greenScreen,
+      orange,
+      pinkStripes,
+      blueStrips,
+      moon,
+      nyan,
+      tacos,
+      pizza,
+      sushi,
+      matrix,
+      nightClub,
+      trippySwirl,
+      clouds,
+      gold,
+    ];
+
+    return images[index];
+  };
+
   const grid = [];
 
   for (let i = 0; i < 15; i++) {
     grid.push(
       <div key={`${i} key`} className={styles.item}>
         <div
-          style={{ backgroundImage: `url(${dogeHat})` }}
+          style={{ backgroundImage: `url(${backgroundForIndex(i)})` }}
+          className={styles.background}
+        />
+
+        <div
+          style={{ backgroundImage: `url(${doge})` }}
           className={styles.background}
         />
 
