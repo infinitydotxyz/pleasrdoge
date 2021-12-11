@@ -10,7 +10,7 @@ export const Provider = ({ children }) => {
   const [address, setAddress] = useState('');
   const [numPlays, setNumPlays] = useState(0);
 
-  if (sharedMessenger) {
+  if (!sharedMessenger) {
     sharedMessenger = new HostMessenger((message) => {
       console.log(message);
 
