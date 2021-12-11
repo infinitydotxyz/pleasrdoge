@@ -3,22 +3,22 @@ import { HostMessenger } from './hostMessenger';
 
 export const Context = createContext();
 
-let sharedMessenger;
-
 export const Provider = ({ children }) => {
   const [score, setScore] = useState(0);
   const [address, setAddress] = useState('');
   const [numPlays, setNumPlays] = useState(0);
 
-  if (!sharedMessenger) {
-    sharedMessenger = new HostMessenger((message) => {
+  React.useMemo(() => {
+    const result = new HostMessenger((message) => {
       console.log(message);
 
-      setAddress(message.data);
+      setAddress(message.param);
     });
 
-    sharedMessenger.requestAddress();
-  }
+    result.requestAddress();
+
+    return result;
+  }, []);
 
   const value = {
     score,

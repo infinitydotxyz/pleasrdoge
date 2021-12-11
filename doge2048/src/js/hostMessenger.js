@@ -5,14 +5,14 @@ export class HostMessenger {
   }
 
   requestAddress = () => {
-    this.sendToHost('requestAddress', '');
+    this.sendToHost('address', '');
   };
 
   sendToHost = (message, param) => {
     window.parent.postMessage(
       {
         from: 'game',
-        command: message,
+        message: message,
         param: param,
       },
       '*'
@@ -22,12 +22,11 @@ export class HostMessenger {
   listen = () => {
     window.addEventListener('message', (event) => {
       if (event.data && event.data.from === 'host') {
-        switch (event.data.message.command) {
+        switch (event.data.message) {
           case 'address':
             let body = {
-              command: event.data.message.command,
-              data: event.data.message.data,
-              param: event.data.message.param,
+              message: event.data.message,
+              param: event.data.param,
             };
 
             console.log(body);
