@@ -1,8 +1,8 @@
 {
   "files": {
     "main.css": "/static/css/main.f8740411.chunk.css",
-    "main.js": "/static/js/main.f49e6521.chunk.js",
-    "main.js.map": "/static/js/main.f49e6521.chunk.js.map",
+    "main.js": "/static/js/main.0d7a1230.chunk.js",
+    "main.js.map": "/static/js/main.0d7a1230.chunk.js.map",
     "runtime-main.js": "/static/js/runtime-main.5a0e1eb4.js",
     "runtime-main.js.map": "/static/js/runtime-main.5a0e1eb4.js.map",
     "static/js/2.ac5a5618.chunk.js": "/static/js/2.ac5a5618.chunk.js",
@@ -24,16 +24,16 @@
     "static/media/nyan.5f8231fc.gif": "/static/media/nyan.5f8231fc.gif",
     "static/media/orange.b4581be0.png": "/static/media/orange.b4581be0.png",
     "static/media/pinkStripes.9a81a082.gif": "/static/media/pinkStripes.9a81a082.gif",
-    "static/media/pizza.ab3b7118.gif": "/static/media/pizza.ab3b7118.gif",
+    "static/media/pizza.1b695d5e.gif": "/static/media/pizza.1b695d5e.gif",
     "static/media/purple.c238feee.png": "/static/media/purple.c238feee.png",
     "static/media/sushi.b8d884a0.gif": "/static/media/sushi.b8d884a0.gif",
     "static/media/tacos.22d4e0d5.gif": "/static/media/tacos.22d4e0d5.gif",
-    "static/media/trippySwirl.1bf2d452.gif": "/static/media/trippySwirl.1bf2d452.gif"
+    "static/media/trippySwirl.af041e3c.gif": "/static/media/trippySwirl.af041e3c.gif"
   },
   "entrypoints": [
     "static/js/runtime-main.5a0e1eb4.js",
     "static/js/2.ac5a5618.chunk.js",
     "static/css/main.f8740411.chunk.css",
-    "static/js/main.f49e6521.chunk.js"
+    "static/js/main.0d7a1230.chunk.js"
   ]
 }
