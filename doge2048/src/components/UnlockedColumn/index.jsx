@@ -73,9 +73,8 @@ export const UnlockedColumn = () => {
         {score < i * 1000 && (
           <div className={styles.overlay}>
             <div className={styles.content}>
-              <div className={styles.first}>{`L${i + 1}`}</div>
-              <div>{`1,000 pts`}</div>
-              <div>needed</div>
+              <div className={styles.first}>Level</div>
+              <div>{`#${i}`}</div>
             </div>
           </div>
         )}
