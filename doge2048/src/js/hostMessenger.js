@@ -22,6 +22,7 @@ export class HostMessenger {
   listen = () => {
     window.addEventListener('message', (event) => {
       if (event.data && event.data.from === 'host') {
+        console.log('hm got something');
         switch (event.data.message) {
           case 'address':
             let body = {
@@ -34,7 +35,7 @@ export class HostMessenger {
             this.callback(body);
             break;
           default:
-            console.log(`HM: event not handled ${event.data}`);
+            console.log(`HM: event not handled ${event.data.message}`);
             break;
         }
       }
