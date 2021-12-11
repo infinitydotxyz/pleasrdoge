@@ -34,7 +34,7 @@ export class HostMessenger {
             this.callback(body);
             break;
           default:
-            console.log(`event not handled ${event}`);
+            console.log(`HM: event not handled ${event.data}`);
             break;
         }
       }
