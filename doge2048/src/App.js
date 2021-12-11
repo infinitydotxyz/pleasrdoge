@@ -2,7 +2,7 @@ import './App.css';
 import './style/main.css';
 import './js/animframe_polyfill.js';
 import './js/application.js';
-import { Provider } from './Context';
+import { Provider } from './js/Context';
 import { ThemeProvider, createTheme } from '@mui/material/styles';
 
 import { MainContent } from './components/MainContent';
