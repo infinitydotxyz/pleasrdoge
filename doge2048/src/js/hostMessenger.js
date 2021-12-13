@@ -2,6 +2,9 @@ export class HostMessenger {
   constructor(callback) {
     this.callback = callback;
     window.addEventListener('message', this.listener);
+
+    // parent iframe might not be ready, but we call it on ready below too
+    this.requestAddress();
   }
 
   dispose = () => {
@@ -25,7 +28,6 @@ export class HostMessenger {
 
   listener = (event) => {
     if (event.data && event.data.from === 'host') {
-      console.log('hm got something');
       switch (event.data.message) {
         case 'address':
           let body = {
@@ -33,9 +35,12 @@ export class HostMessenger {
             param: event.data.param,
           };
 
-          console.log(body);
-
           this.callback(body);
+          break;
+
+        case 'ready':
+          this.requestAddress();
+
           break;
         default:
           console.log(`HM: event not handled ${event.data.message}`);

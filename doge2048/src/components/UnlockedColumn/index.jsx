@@ -19,7 +19,7 @@ import tacos from '../../img/Backgrounds/tacos.gif';
 import trippySwirl from '../../img/Backgrounds/trippySwirl.gif';
 
 export const UnlockedColumn = () => {
-  const { score, setScore, address } = useContext(Context);
+  const { score, setScore } = useContext(Context);
 
   useEffect(() => {
     const onEvent = (event) => {
@@ -84,7 +84,6 @@ export const UnlockedColumn = () => {
 
   return (
     <div className={styles.main}>
-      {address}
       <div className={styles.title}>NFT Levels</div>
 
       <div className={styles.grid}>{grid}</div>

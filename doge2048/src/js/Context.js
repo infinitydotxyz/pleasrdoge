@@ -10,12 +10,8 @@ export const Provider = ({ children }) => {
 
   React.useEffect(() => {
     const result = new HostMessenger((message) => {
-      console.log(message);
-
       setAddress(message.param);
     });
-
-    result.requestAddress();
 
     return () => {
       result.dispose();
