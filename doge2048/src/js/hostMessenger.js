@@ -1,8 +1,12 @@
 export class HostMessenger {
   constructor(callback) {
     this.callback = callback;
-    this.listen();
+    window.addEventListener('message', this.listener);
   }
+
+  dispose = () => {
+    window.removeEventListener('message', this.listener);
+  };
 
   requestAddress = () => {
     this.sendToHost('address', '');
@@ -19,26 +23,24 @@ export class HostMessenger {
     );
   };
 
-  listen = () => {
-    window.addEventListener('message', (event) => {
-      if (event.data && event.data.from === 'host') {
-        console.log('hm got something');
-        switch (event.data.message) {
-          case 'address':
-            let body = {
-              message: event.data.message,
-              param: event.data.param,
-            };
+  listener = (event) => {
+    if (event.data && event.data.from === 'host') {
+      console.log('hm got something');
+      switch (event.data.message) {
+        case 'address':
+          let body = {
+            message: event.data.message,
+            param: event.data.param,
+          };
 
-            console.log(body);
+          console.log(body);
 
-            this.callback(body);
-            break;
-          default:
-            console.log(`HM: event not handled ${event.data.message}`);
-            break;
-        }
+          this.callback(body);
+          break;
+        default:
+          console.log(`HM: event not handled ${event.data.message}`);
+          break;
       }
-    });
+    }
   };
 }

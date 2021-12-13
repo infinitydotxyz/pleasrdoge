@@ -8,7 +8,7 @@ export const Provider = ({ children }) => {
   const [address, setAddress] = useState('');
   const [numPlays, setNumPlays] = useState(0);
 
-  React.useMemo(() => {
+  React.useEffect(() => {
     const result = new HostMessenger((message) => {
       console.log(message);
 
@@ -17,7 +17,9 @@ export const Provider = ({ children }) => {
 
     result.requestAddress();
 
-    return result;
+    return () => {
+      result.dispose();
+    };
   }, []);
 
   const value = {
