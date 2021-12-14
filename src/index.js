@@ -23,7 +23,7 @@ app.use(setCache);
 app.use('/', express.static(path.join(__dirname, '/../public/doge2048')));
 
 // init server
-const PORT = process.env.PORT || 9092;
+const PORT = process.env.PORT || 9090;
 app.listen(PORT, () => {
   console.log(`Server listening on port ${PORT}...`);
 });

@@ -11,7 +11,6 @@ export const Provider = ({ children }) => {
   React.useMemo(() => {
     SharedMessenger.addListener((data) => {
       if (data && data.from === 'game') {
-        console.log(data);
         switch (data.message) {
           case 'address':
             setAddress(data.param);
