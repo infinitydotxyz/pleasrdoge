@@ -1,5 +1,5 @@
 import React, { createContext, useState } from 'react';
-import { HostMessenger } from './hostMessenger';
+import SharedMessenger from './hostMessenger';
 
 export const Context = createContext();
 
@@ -8,14 +8,23 @@ export const Provider = ({ children }) => {
   const [address, setAddress] = useState('');
   const [numPlays, setNumPlays] = useState(0);
 
-  React.useEffect(() => {
-    const result = new HostMessenger((message) => {
-      setAddress(message.param);
-    });
+  React.useMemo(() => {
+    SharedMessenger.addListener((data) => {
+      if (data && data.from === 'game') {
+        console.log(data);
+        switch (data.message) {
+          case 'address':
+            setAddress(data.param);
 
-    return () => {
-      result.dispose();
-    };
+            break;
+          default:
+            console.log(
+              `SharedMessenger.addListener not handled : ${data.message}`
+            );
+            break;
+        }
+      }
+    });
   }, []);
 
   const value = {

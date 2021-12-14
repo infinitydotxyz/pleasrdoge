@@ -8,7 +8,6 @@ import { UnlockedColumn } from '../UnlockedColumn';
 import { Instructions } from '../Instructions';
 import Button from '@mui/material/Button';
 import { TokensEarned } from '../TokensEarned';
-import { getAccount } from '../../js/ethersUtil';
 
 export const MainContent = () => {
   const [nftMode, setNftMode] = React.useState(false);
@@ -55,15 +54,6 @@ export const MainContent = () => {
       <div className={styles.rightSide}>
         <TokensEarned />
         <UnlockedColumn />
-        <div style={{ height: 20 }} />
-        <Button
-          variant="contained"
-          onClick={() => {
-            getAccount();
-          }}
-        >
-          Save Progress
-        </Button>
       </div>
     </div>
   );

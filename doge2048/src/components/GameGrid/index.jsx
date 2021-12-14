@@ -5,7 +5,8 @@ import { GameManager } from '../../js/game_manager';
 export const GameGrid = () => {
   useEffect(() => {
     new GameManager(4);
-  });
+  }, []);
+
   return (
     <div className={styles.gridRow}>
       <div className={styles.leftSide}>

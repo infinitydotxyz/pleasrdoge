@@ -1,10 +1,13 @@
-export class HostMessenger {
-  constructor(callback) {
-    this.callback = callback;
+class HostMessenger {
+  constructor() {
     window.addEventListener('message', this.listener);
 
     // parent iframe might not be ready, but we call it on ready below too
     this.requestAddress();
+  }
+
+  addListener(callback) {
+    this.listener = callback;
   }
 
   dispose = () => {
@@ -13,6 +16,10 @@ export class HostMessenger {
 
   requestAddress = () => {
     this.sendToHost('address', '');
+  };
+
+  sendGameResults = (score) => {
+    this.sendToHost('game-results', { score: score });
   };
 
   sendToHost = (message, param) => {
@@ -30,12 +37,9 @@ export class HostMessenger {
     if (event.data && event.data.from === 'host') {
       switch (event.data.message) {
         case 'address':
-          let body = {
-            message: event.data.message,
-            param: event.data.param,
-          };
-
-          this.callback(body);
+          if (this.listener) {
+            this.listener(event.data);
+          }
           break;
 
         case 'ready':
@@ -49,3 +53,7 @@ export class HostMessenger {
     }
   };
 }
+
+const instance = new HostMessenger();
+
+export default instance;
