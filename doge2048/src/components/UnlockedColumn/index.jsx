@@ -82,7 +82,7 @@ const levelScores = [
 ];
 
 export const UnlockedColumn = () => {
-  const { score, setScore } = useContext(Context);
+  const { score, setScore, levelImages } = useContext(Context);
 
   useEffect(() => {
     const onEvent = (event) => {
@@ -109,6 +109,10 @@ export const UnlockedColumn = () => {
   };
 
   const backgroundForIndex = (index) => {
+    if (levelImages.length > 0) {
+      return levelImages[index];
+    }
+
     const images = [
       purple,
       greenScreen,

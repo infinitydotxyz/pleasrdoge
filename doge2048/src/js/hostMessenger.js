@@ -3,7 +3,7 @@ class HostMessenger {
     window.addEventListener('message', this.listener);
 
     // parent iframe might not be ready, but we call it on ready below too
-    this.requestAddress();
+    this.makeSetupRequests();
   }
 
   addListener(callback) {
@@ -26,6 +26,10 @@ class HostMessenger {
     this.sendToHost('deposit-dog', {});
   };
 
+  levelImages = () => {
+    this.sendToHost('level-images', {});
+  };
+
   sendToHost = (message, param) => {
     window.parent.postMessage(
       {
@@ -35,6 +39,11 @@ class HostMessenger {
       },
       '*'
     );
+  };
+
+  makeSetupRequests = () => {
+    this.requestAddress();
+    this.levelImages();
   };
 
   listener = (event) => {
@@ -47,9 +56,15 @@ class HostMessenger {
           break;
 
         case 'ready':
-          this.requestAddress();
-
+          this.makeSetupRequests();
           break;
+
+        case 'level-images':
+          if (this.listener) {
+            this.listener(event.data);
+          }
+          break;
+
         default:
           console.log(`HM: event not handled ${event.data.message}`);
           break;
