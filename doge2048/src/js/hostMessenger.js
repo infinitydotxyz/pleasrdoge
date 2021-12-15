@@ -22,6 +22,10 @@ class HostMessenger {
     this.sendToHost('game-results', { score: score });
   };
 
+  depositDog = () => {
+    this.sendToHost('deposit-dog', {});
+  };
+
   sendToHost = (message, param) => {
     window.parent.postMessage(
       {
