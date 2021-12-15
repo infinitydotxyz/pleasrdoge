@@ -18,6 +18,69 @@ import sushi from '../../img/Backgrounds/sushi.gif';
 import tacos from '../../img/Backgrounds/tacos.gif';
 import trippySwirl from '../../img/Backgrounds/trippySwirl.gif';
 
+const levelScores = [
+  {
+    min: 0,
+    max: 43,
+  },
+  {
+    min: 44,
+    max: 124,
+  },
+  {
+    min: 125,
+    max: 316,
+  },
+  {
+    min: 317,
+    max: 764,
+  },
+  {
+    min: 765,
+    max: 1788,
+  },
+  {
+    min: 1789,
+    max: 4092,
+  },
+  {
+    min: 4093,
+    max: 9212,
+  },
+  {
+    min: 9213,
+    max: 20476,
+  },
+  {
+    min: 20477,
+    max: 45052,
+  },
+  {
+    min: 45053,
+    max: 98300,
+  },
+  {
+    min: 98301,
+    max: 212988,
+  },
+  {
+    min: 212989,
+    max: 458748,
+  },
+  {
+    min: 458749,
+    max: 983036,
+  },
+  {
+    min: 983037,
+    max: 2097148,
+  },
+  {
+    min: 2097149,
+    max: Infinity,
+  },
+];
+
 export const UnlockedColumn = () => {
   const { score, setScore } = useContext(Context);
 
@@ -32,6 +95,18 @@ export const UnlockedColumn = () => {
       document.removeEventListener('score', onEvent);
     };
   }, [setScore]);
+
+  const levelForScore = (score) => {
+    for (let index = 0; index < levelScores.length; index++) {
+      const item = levelScores[index];
+
+      if (score >= item.min && score <= item.max) {
+        return index;
+      }
+    }
+
+    return 0;
+  };
 
   const backgroundForIndex = (index) => {
     const images = [
@@ -57,6 +132,8 @@ export const UnlockedColumn = () => {
 
   const grid = [];
 
+  const level = levelForScore(score);
+
   for (let i = 0; i < 15; i++) {
     grid.push(
       <div key={`${i} key`} className={styles.item}>
@@ -70,7 +147,7 @@ export const UnlockedColumn = () => {
           className={styles.background}
         />
 
-        {score < i * 1000 && (
+        {i > level && (
           <div className={styles.overlay}>
             <div className={styles.content}>
               <div className={styles.first}>Level</div>
