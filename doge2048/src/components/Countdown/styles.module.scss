@@ -1,0 +1,18 @@
+.main {
+  display: flex;
+  font-family: monospace;
+  align-items: center;
+
+  .digit {
+    display: flex;
+    line-height: 1;
+
+    .unit {
+      color: rgba(0, 0, 0, 0.4);
+
+      :global(body.chakra-ui-dark) & {
+        color: rgba(255, 255, 255, 0.7);
+      }
+    }
+  }
+}

@@ -1,0 +1,26 @@
+.main {
+  margin-top: 20px;
+  border-radius: 12px;
+  border: solid 1px #aaa;
+  display: flex;
+  align-items: flex-start;
+  flex-direction: column;
+
+  .title {
+    padding: 16px 20px;
+
+    text-align: start;
+  }
+
+  .rows {
+    border-top: solid 1px #aaa;
+    padding: 16px 20px;
+    min-width: 310px;
+
+    .row {
+      padding-bottom: 10px;
+      width: 100%;
+      display: flex;
+    }
+  }
+}

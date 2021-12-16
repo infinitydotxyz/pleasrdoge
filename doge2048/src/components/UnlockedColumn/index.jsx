@@ -2,21 +2,21 @@ import styles from './styles.module.scss';
 import { Context } from '../../js/Context';
 import React, { useContext, useEffect } from 'react';
 import doge from '../../img/doge.png';
-import blueStrips from '../../img/Backgrounds/blueStripes.gif';
-import clouds from '../../img/Backgrounds/clouds.gif';
-import gold from '../../img/Backgrounds/gold.gif';
+// import blueStrips from '../../img/Backgrounds/blueStripes.gif';
+// import clouds from '../../img/Backgrounds/clouds.gif';
+// import gold from '../../img/Backgrounds/gold.gif';
 import greenScreen from '../../img/Backgrounds/greenScreen.png';
-import matrix from '../../img/Backgrounds/matrix.gif';
-import moon from '../../img/Backgrounds/moon.gif';
-import nightClub from '../../img/Backgrounds/nightClub.gif';
-import nyan from '../../img/Backgrounds/nyan.gif';
-import orange from '../../img/Backgrounds/orange.png';
-import pinkStripes from '../../img/Backgrounds/pinkStripes.gif';
-import pizza from '../../img/Backgrounds/pizza.gif';
-import purple from '../../img/Backgrounds/purple.png';
-import sushi from '../../img/Backgrounds/sushi.gif';
-import tacos from '../../img/Backgrounds/tacos.gif';
-import trippySwirl from '../../img/Backgrounds/trippySwirl.gif';
+// import matrix from '../../img/Backgrounds/matrix.gif';
+// import moon from '../../img/Backgrounds/moon.gif';
+// import nightClub from '../../img/Backgrounds/nightClub.gif';
+// import nyan from '../../img/Backgrounds/nyan.gif';
+// import orange from '../../img/Backgrounds/orange.png';
+// import pinkStripes from '../../img/Backgrounds/pinkStripes.gif';
+// import pizza from '../../img/Backgrounds/pizza.gif';
+// import purple from '../../img/Backgrounds/purple.png';
+// import sushi from '../../img/Backgrounds/sushi.gif';
+// import tacos from '../../img/Backgrounds/tacos.gif';
+// import trippySwirl from '../../img/Backgrounds/trippySwirl.gif';
 
 const levelScores = [
   {
@@ -116,24 +116,24 @@ export const UnlockedColumn = () => {
     }
 
     const images = [
-      purple,
+      // purple,
       greenScreen,
-      orange,
-      pinkStripes,
-      blueStrips,
-      moon,
-      nyan,
-      tacos,
-      pizza,
-      sushi,
-      matrix,
-      nightClub,
-      trippySwirl,
-      clouds,
-      gold,
+      // orange,
+      // pinkStripes,
+      // blueStrips,
+      // moon,
+      // nyan,
+      // tacos,
+      // pizza,
+      // sushi,
+      // matrix,
+      // nightClub,
+      // trippySwirl,
+      // clouds,
+      // gold,
     ];
 
-    return images[index];
+    return images[0]; // just use green
   };
 
   const grid = [];
