@@ -108,6 +108,8 @@ export const UnlockedColumn = () => {
     return 0;
   };
 
+  const dogeOnBackground = levelImages.length === 0;
+
   const backgroundForIndex = (index) => {
     if (levelImages.length > 0) {
       return levelImages[index];
@@ -146,10 +148,12 @@ export const UnlockedColumn = () => {
           className={styles.background}
         />
 
-        <div
-          style={{ backgroundImage: `url(${doge})` }}
-          className={styles.background}
-        />
+        {dogeOnBackground && (
+          <div
+            style={{ backgroundImage: `url(${doge})` }}
+            className={styles.background}
+          />
+        )}
 
         {i > level && (
           <div className={styles.overlay}>
