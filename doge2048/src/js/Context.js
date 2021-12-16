@@ -11,14 +11,14 @@ export const Provider = ({ children }) => {
 
   React.useMemo(() => {
     SharedMessenger.addListener((data) => {
-      if (data && data.from === 'game') {
+      if (data && data.from === 'host') {
         switch (data.message) {
           case 'address':
             setAddress(data.param);
             break;
 
           case 'level-images':
-            setLevelImages(data.param);
+            setLevelImages(JSON.parse(data.param));
             break;
 
           default:
