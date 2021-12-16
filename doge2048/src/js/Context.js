@@ -6,8 +6,8 @@ export const Context = createContext();
 export const Provider = ({ children }) => {
   const [score, setScore] = useState(0);
   const [address, setAddress] = useState('');
-  const [numPlays, setNumPlays] = useState(0);
   const [levelImages, setLevelImages] = useState([]);
+  const [nftImage, setNftImage] = useState('');
 
   React.useMemo(() => {
     SharedMessenger.addListener((data) => {
@@ -19,6 +19,10 @@ export const Provider = ({ children }) => {
 
           case 'level-images':
             setLevelImages(JSON.parse(data.param));
+            break;
+
+          case 'nft-image':
+            setNftImage(data.param);
             break;
 
           default:
@@ -36,9 +40,8 @@ export const Provider = ({ children }) => {
     setScore,
     address,
     setAddress,
-    numPlays,
-    setNumPlays,
     levelImages,
+    nftImage,
   };
 
   return <Context.Provider value={value}>{children}</Context.Provider>;

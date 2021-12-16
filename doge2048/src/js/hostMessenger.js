@@ -30,6 +30,10 @@ class HostMessenger {
     this.sendToHost('level-images', {});
   };
 
+  nftImage = () => {
+    this.sendToHost('nft-image', {});
+  };
+
   sendToHost = (message, param) => {
     window.parent.postMessage(
       {
@@ -44,6 +48,7 @@ class HostMessenger {
   makeSetupRequests = () => {
     this.requestAddress();
     this.levelImages();
+    this.nftImage();
   };
 
   listener = (event) => {
@@ -60,6 +65,12 @@ class HostMessenger {
           break;
 
         case 'level-images':
+          if (this.listener) {
+            this.listener(event.data);
+          }
+          break;
+
+        case 'nft-image':
           if (this.listener) {
             this.listener(event.data);
           }
