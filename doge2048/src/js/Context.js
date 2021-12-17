@@ -5,6 +5,8 @@ export const Context = createContext();
 
 export const Provider = ({ children }) => {
   const [score, setScore] = useState(0);
+  const [numPlays, setNumPlays] = useState(0);
+  const [highScore, setHighScore] = useState(0);
   const [address, setAddress] = useState('');
   const [levelImages, setLevelImages] = useState([]);
   const [nftImage, setNftImage] = useState('');
@@ -13,8 +15,10 @@ export const Provider = ({ children }) => {
     SharedMessenger.addListener((data) => {
       if (data && data.from === 'host') {
         switch (data.message) {
-          case 'address':
-            setAddress(data.param);
+          case 'game-state':
+            setAddress(data.param['address']);
+            setNumPlays(data.param['numPlays']);
+            setHighScore(data.param['highScore']);
             break;
 
           case 'level-images':
@@ -39,8 +43,9 @@ export const Provider = ({ children }) => {
     score,
     setScore,
     address,
-    setAddress,
     levelImages,
+    numPlays,
+    highScore,
     nftImage,
   };
 

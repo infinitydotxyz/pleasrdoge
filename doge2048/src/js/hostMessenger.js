@@ -14,8 +14,8 @@ class HostMessenger {
     window.removeEventListener('message', this.listener);
   };
 
-  requestAddress = () => {
-    this.sendToHost('address', '');
+  requestGameState = () => {
+    this.sendToHost('game-state', '');
   };
 
   sendGameResults = (score) => {
@@ -46,7 +46,7 @@ class HostMessenger {
   };
 
   makeSetupRequests = () => {
-    this.requestAddress();
+    this.requestGameState();
     this.levelImages();
     this.nftImage();
   };
@@ -54,7 +54,7 @@ class HostMessenger {
   listener = (event) => {
     if (event.data && event.data.from === 'host') {
       switch (event.data.message) {
-        case 'address':
+        case 'game-state':
           if (this.listener) {
             this.listener(event.data);
           }
