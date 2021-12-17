@@ -47,6 +47,7 @@ export const Provider = ({ children }) => {
     numPlays,
     highScore,
     nftImage,
+    setHighScore,
   };
 
   return <Context.Provider value={value}>{children}</Context.Provider>;

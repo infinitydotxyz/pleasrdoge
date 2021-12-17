@@ -1,5 +1,6 @@
 import React from 'react';
 import styles from './styles.module.scss';
+import { Scoreboard } from '../Scoreboard';
 
 export const Header = () => {
   return (
@@ -12,8 +13,7 @@ export const Header = () => {
         <span style={{ color: '#00FFFF' }}>8</span>
       </h1>
       <div className="scores-container">
-        <div className="score-container">0</div>
-        <div className="best-container">0</div>
+        <Scoreboard />
       </div>
     </div>
   );

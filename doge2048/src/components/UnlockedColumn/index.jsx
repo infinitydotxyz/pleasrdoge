@@ -82,11 +82,16 @@ const levelScores = [
 ];
 
 export const UnlockedColumn = () => {
-  const { score, setScore, levelImages } = useContext(Context);
+  const { score, setScore, highScore, setHighScore, levelImages } =
+    useContext(Context);
 
   useEffect(() => {
     const onEvent = (event) => {
       setScore(event.detail.score);
+
+      if (event.detail.score > highScore) {
+        setHighScore(event.detail.score);
+      }
     };
 
     document.addEventListener('score', onEvent);
@@ -94,7 +99,7 @@ export const UnlockedColumn = () => {
     return () => {
       document.removeEventListener('score', onEvent);
     };
-  }, [setScore]);
+  }, [setScore, setHighScore, highScore]);
 
   const levelForScore = (score) => {
     for (let index = 0; index < levelScores.length; index++) {

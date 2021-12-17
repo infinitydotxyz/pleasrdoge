@@ -1,13 +1,11 @@
-import React from 'react';
+import React, { useContext } from 'react';
 import styles from './styles.module.scss';
 import { Countdown } from '../Countdown';
+import { Context } from '../../js/Context';
 
 export const LotteryInfo = ({ onChange }) => {
-  // const handleClick = (value) => {
-  //   setOnState(value);
+  const { numPlays } = useContext(Context);
 
-  //   onChange(value);
-  // };
   const expiryTimestamp = new Date(Date.parse('2/07/22'));
 
   return (
@@ -32,7 +30,7 @@ export const LotteryInfo = ({ onChange }) => {
           <div>Your Plays</div>
 
           <div style={{ display: 'flex', flex: 1 }} />
-          <div>28</div>
+          <div>{numPlays}</div>
         </div>
       </div>
     </div>

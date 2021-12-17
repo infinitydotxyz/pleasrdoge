@@ -1,8 +1,6 @@
 import SharedMessenger from './hostMessenger';
 export function HTMLActuator() {
   this.tileContainer = document.querySelector('.tile-container');
-  this.scoreContainer = document.querySelector('.score-container');
-  this.bestContainer = document.querySelector('.best-container');
   this.messageContainer = document.querySelector('.game-message');
   this.dogeSays = document.querySelector('.doge-says');
 
@@ -50,7 +48,13 @@ HTMLActuator.prototype.actuate = function (grid, metadata) {
     });
 
     self.updateScore(metadata.score);
-    self.updateBestScore(metadata.bestScore);
+
+    // Dispatch the event.
+    document.dispatchEvent(
+      new CustomEvent('score', {
+        detail: { score: metadata.score },
+      })
+    );
 
     if (metadata.terminated) {
       if (metadata.over) {
@@ -136,27 +140,12 @@ HTMLActuator.prototype.positionClass = function (position) {
 };
 
 HTMLActuator.prototype.updateScore = function (score) {
-  this.clearContainer(this.scoreContainer);
   this.clearContainer(this.dogeSays);
 
   const difference = score - this.score;
   this.score = score;
 
-  // Dispatch the event.
-  document.dispatchEvent(
-    new CustomEvent('score', {
-      detail: { score },
-    })
-  );
-
-  this.scoreContainer.textContent = this.score;
-
   if (difference > 0) {
-    const addition = document.createElement('div');
-    addition.classList.add('score-addition');
-    addition.textContent = '+' + difference;
-    this.scoreContainer.appendChild(addition);
-
     const message = dogeSayings[Math.floor(Math.random() * dogeSayings.length)];
     const messageElement = document.createElement('p');
     messageElement.textContent = message;
@@ -174,10 +163,6 @@ HTMLActuator.prototype.updateScore = function (score) {
     messageElement.setAttribute('style', styleString);
     this.dogeSays.appendChild(messageElement);
   }
-};
-
-HTMLActuator.prototype.updateBestScore = function (bestScore) {
-  this.bestContainer.textContent = bestScore;
 };
 
 HTMLActuator.prototype.message = function (won) {

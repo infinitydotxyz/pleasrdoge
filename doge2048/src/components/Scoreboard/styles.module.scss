@@ -1,0 +1,48 @@
+.main {
+  display: flex;
+
+  .scoreContainer {
+    position: relative;
+    display: inline-block;
+    background: #f0f;
+    padding: 15px 25px;
+    height: 25px;
+    line-height: 42px;
+    font-weight: bold;
+    border-radius: 3px;
+    color: white;
+    margin-top: 8px;
+    text-align: center;
+
+    .scoreContainerTitle {
+      position: absolute;
+      width: 100%;
+      top: 10px;
+      left: 0;
+      text-transform: uppercase;
+      font-size: 12px;
+      line-height: 13px;
+      text-align: center;
+      color: #000;
+    }
+
+    .scoreContainerText {
+      font-family: monospace;
+      font-weight: bold;
+      border-radius: 3px;
+      color: white;
+      text-align: center;
+    }
+
+    .scoreAddition {
+      position: absolute;
+      right: 30px;
+      font-size: 20px;
+      line-height: 20px;
+      color: rgba(119, 110, 101, 0.9);
+      z-index: 100;
+      animation: move-up 600ms ease-in;
+      animation-fill-mode: both;
+    }
+  }
+}

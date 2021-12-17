@@ -2,12 +2,10 @@ import { Grid } from './grid';
 import { Tile } from './tile';
 import { KeyboardInputManager } from './keyboard_input_manager';
 import { HTMLActuator } from './html_actuator';
-import { LocalScoreManager } from './local_score_manager';
 
 export function GameManager(size) {
   this.size = size; // Size of the grid
   this.inputManager = new KeyboardInputManager();
-  this.scoreManager = new LocalScoreManager();
   this.actuator = new HTMLActuator();
 
   this.startTiles = 2;
@@ -74,15 +72,10 @@ GameManager.prototype.addRandomTile = function () {
 
 // Sends the updated grid to the actuator
 GameManager.prototype.actuate = function () {
-  if (this.scoreManager.get() < this.score) {
-    this.scoreManager.set(this.score);
-  }
-
   this.actuator.actuate(this.grid, {
     score: this.score,
     over: this.over,
     won: this.won,
-    bestScore: this.scoreManager.get(),
     terminated: this.isGameTerminated(),
   });
 };
