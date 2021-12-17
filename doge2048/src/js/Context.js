@@ -16,9 +16,10 @@ export const Provider = ({ children }) => {
       if (data && data.from === 'host') {
         switch (data.message) {
           case 'game-state':
-            setAddress(data.param['address']);
-            setNumPlays(data.param['numPlays']);
-            setHighScore(data.param['highScore']);
+            const map = JSON.parse(data.param);
+            setAddress(map['address']);
+            setNumPlays(map['numPlays']);
+            setHighScore(map['highScore']);
             break;
 
           case 'level-images':
