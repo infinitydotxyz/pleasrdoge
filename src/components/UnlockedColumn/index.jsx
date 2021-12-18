@@ -101,11 +101,11 @@ export const UnlockedColumn = () => {
     };
   }, [setScore, setHighScore, highScore]);
 
-  const levelForScore = (score) => {
+  const levelForScore = (lscore) => {
     for (let index = 0; index < levelScores.length; index++) {
       const item = levelScores[index];
 
-      if (score >= item.min && score <= item.max) {
+      if (lscore >= item.min && lscore <= item.max) {
         return index;
       }
     }
