@@ -8,7 +8,7 @@ export const TokensEarned = () => {
     <div className={styles.main}>
       <div className={styles.board}>
         <div className={styles.left}>
-          <div className={styles.title}>Dog tokens</div>
+          <div className={styles.title}>Dog balance</div>
           <div className={styles.subtitle}>20/80</div>
         </div>
 
