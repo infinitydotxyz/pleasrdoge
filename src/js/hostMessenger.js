@@ -23,7 +23,7 @@ class HostMessenger {
   };
 
   depositDog = () => {
-    this.sendToHost('deposit-dog', {});
+    this.sendToHost('deposit-dog', { amount: '10' });
   };
 
   levelImages = () => {
