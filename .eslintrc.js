@@ -2,8 +2,9 @@ module.exports = {
   env: {
     browser: true,
     node: true,
+    es6: true,
   },
-  parser: '@babel/eslint-parser',
+  parser: 'babel-eslint',
   parserOptions: {
     requireConfigFile: false,
     ecmaFeatures: {
@@ -15,7 +16,7 @@ module.exports = {
   rules: {
     'prettier/prettier': 'error',
   },
-  plugins: ['jsx', 'react', 'prettier'],
+  plugins: ['react', 'prettier'],
   rules: {
     'no-console': 0,
     'linebreak-style': ['error', 'unix'],
