@@ -1,6 +1,6 @@
 import * as ethers from 'ethers';
 
-export async function initEthers() {
+export const initEthers = async () => {
   try {
     await window.ethereum.request({ method: 'eth_requestAccounts' });
   } catch (err) {
@@ -20,12 +20,10 @@ export async function initEthers() {
   });
 
   return ethersProvider;
-}
+};
 
 export const getAccount = async () => {
   try {
-    console.log('fuc');
-
     const res = await initEthers();
 
     if (res && res.getSigner) {
@@ -40,10 +38,6 @@ export const getAccount = async () => {
     if (!ethersProvider) {
       return '';
     }
-
-    console.log(ethersProvider);
-    console.log(ethersProvider.getSigner());
-
     return await ethersProvider.getSigner().getAddress();
   } catch (err) {
     console.error(err);

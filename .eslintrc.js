@@ -1,17 +1,19 @@
 module.exports = {
-  extends: ['prettier'],
   env: {
     browser: true,
     node: true,
   },
   parserOptions: {
+    ecmaFeatures: {
+      jsx: true,
+    },
     sourceType: 'module',
-    ecmaVersion: 2015,
+    ecmaVersion: 2018,
   },
   rules: {
     'prettier/prettier': 'error',
   },
-  plugins: ['prettier'],
+  plugins: ['react', 'prettier'],
   rules: {
     'no-console': 0,
     'linebreak-style': ['error', 'unix'],
@@ -20,7 +22,6 @@ module.exports = {
     'no-undef': 2,
     'no-unreachable': 2,
     'no-empty-pattern': 2,
-    'no-unused-vars': 2,
     'no-alert': 2,
     'no-empty-function': 2,
     'no-caller': 2,
@@ -81,13 +82,6 @@ module.exports = {
     'no-useless-computed-key': 2,
     'space-infix-ops': 2,
     yoda: [2, 'never'],
-    'no-unused-vars': [
-      2,
-      {
-        vars: 'all',
-        args: 'none',
-      },
-    ],
     'eol-last': 2,
     'space-before-blocks': 2,
     'no-self-compare': 2,
