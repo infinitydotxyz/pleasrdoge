@@ -27,6 +27,12 @@
     "sass": "1.43.5",
     "serve": "^13.0.2"
   },
+  "devDependencies": {
+    "eslint": "^7.11.0",
+    "eslint-config-prettier": "^8.3.0",
+    "eslint-plugin-prettier": "^4.0.0",
+    "prettier": "^2.4.1"
+  },
   "scripts": {
     "dev": "export PORT=8080 && react-scripts start",
     "start": "serve -s build -l 8080",
