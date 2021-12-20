@@ -1,15 +1,18 @@
-import React from 'react';
+import React, { useContext } from 'react';
 import styles from './styles.module.scss';
 import Button from '@mui/material/Button';
 import SharedMessenger from '../../js/hostMessenger';
+import { Context } from '../../js/Context';
 
 export const TokensEarned = () => {
+  const { dogBalance } = useContext(Context);
+
   return (
     <div className={styles.main}>
       <div className={styles.board}>
         <div className={styles.left}>
           <div className={styles.title}>Dog balance</div>
-          <div className={styles.subtitle}>20/80</div>
+          <div className={styles.subtitle}>{dogBalance}</div>
         </div>
 
         <div className={styles.right}>

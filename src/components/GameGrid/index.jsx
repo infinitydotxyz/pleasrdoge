@@ -1,10 +1,14 @@
-import React, { useEffect } from 'react';
+import React, { useEffect, useState } from 'react';
 import styles from './styles.module.scss';
 import { GameManager } from '../../js/game_manager';
+import SharedMessenger from '../../js/hostMessenger';
 
 export const GameGrid = () => {
+  const [gameManager, setGameManager] = useState();
+
   useEffect(() => {
-    new GameManager(4);
+    const gm = new GameManager(4);
+    setGameManager(gm);
   }, []);
 
   return (
@@ -20,6 +24,15 @@ export const GameGrid = () => {
             <div className="lower">
               <div className="keep-playing-button btn">Keep going</div>
               <div className="retry-button btn">Try again</div>
+              <div
+                onClick={() => {
+                  SharedMessenger.sendSaveState(gameManager.score);
+                  gameManager.restart();
+                }}
+                className="btn"
+              >
+                Save to NFT
+              </div>
             </div>
           </div>
           <div className="tile-container"></div>

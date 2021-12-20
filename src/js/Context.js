@@ -7,6 +7,7 @@ export const Provider = ({ children }) => {
   const [score, setScore] = useState(0);
   const [numPlays, setNumPlays] = useState(0);
   const [highScore, setHighScore] = useState(0);
+  const [dogBalance, setDogBalance] = useState(0);
   const [address, setAddress] = useState('');
   const [levelImages, setLevelImages] = useState([]);
   const [nftImage, setNftImage] = useState('');
@@ -20,6 +21,7 @@ export const Provider = ({ children }) => {
             setAddress(map['address']);
             setNumPlays(map['numPlays']);
             setHighScore(map['highScore']);
+            setDogBalance(map['dogBalance']);
             break;
 
           case 'level-images':
@@ -49,6 +51,7 @@ export const Provider = ({ children }) => {
     highScore,
     nftImage,
     setHighScore,
+    dogBalance,
   };
 
   return <Context.Provider value={value}>{children}</Context.Provider>;

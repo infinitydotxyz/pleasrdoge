@@ -18,8 +18,8 @@ class HostMessenger {
     this.sendToHost('game-state', '');
   };
 
-  sendGameResults = (score) => {
-    this.sendToHost('game-results', { score: score });
+  sendSaveState = (score) => {
+    this.sendToHost('save-state', { score: score });
   };
 
   depositDog = () => {
