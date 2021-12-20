@@ -3,7 +3,9 @@ module.exports = {
     browser: true,
     node: true,
   },
+  parser: '@babel/eslint-parser',
   parserOptions: {
+    requireConfigFile: false,
     ecmaFeatures: {
       jsx: true,
     },
@@ -13,7 +15,7 @@ module.exports = {
   rules: {
     'prettier/prettier': 'error',
   },
-  plugins: ['react', 'prettier'],
+  plugins: ['jsx', 'react', 'prettier'],
   rules: {
     'no-console': 0,
     'linebreak-style': ['error', 'unix'],

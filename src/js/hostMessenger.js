@@ -27,7 +27,6 @@ class HostMessenger {
   };
 
   levelImages = () => {
-    console.log('level images');
     this.sendToHost('level-images', {});
   };
 
