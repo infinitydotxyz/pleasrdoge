@@ -101,11 +101,13 @@ export const UnlockedColumn = () => {
     };
   }, [setScore, setHighScore, highScore]);
 
-  const levelForScore = (lscore) => {
+  const levelForScore = () => {
+    const highest = Math.max(score, highScore);
+
     for (let index = 0; index < levelScores.length; index++) {
       const item = levelScores[index];
 
-      if (lscore >= item.min && lscore <= item.max) {
+      if (highest >= item.min && highest <= item.max) {
         return index;
       }
     }
@@ -143,7 +145,7 @@ export const UnlockedColumn = () => {
 
   const grid = [];
 
-  const level = levelForScore(score);
+  const level = levelForScore();
 
   for (let i = 0; i < 15; i++) {
     grid.push(
